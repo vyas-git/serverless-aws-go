@@ -21,6 +21,25 @@
 	Default output format (None): json
 
 
+* Create File: ./tmp/trust-policy.json and copy paste the below json which will  allow lambda services to assume the lambda-function-executor role \n
 
+`{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "lambda.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}`
+
+
+* Create Role with trust policy 
+
+`aws iam create-role --role-name lambda-function-executor \
+--assume-role-policy-document file://./tmp/trust-policy.json`
 
 

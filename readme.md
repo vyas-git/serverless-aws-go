@@ -11,7 +11,7 @@
 * create Iam USER and attach AdministratorAccess policy https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html
 
 
-* aws configuration run below command
+* aws configuration run below command \
 ` aws configure `
 
 

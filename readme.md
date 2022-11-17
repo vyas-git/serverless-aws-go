@@ -43,3 +43,22 @@
 --assume-role-policy-document file://./tmp/trust-policy.json`
 
 
+* Attach the policy AWSLambdaBasicExecutionRole using the aws iam attach-role-policy command as below
+
+`
+aws iam attach-role-policy --role-name lambda-function-executor \
+--policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+`
+
+* Now, let us deploy the actual Lambda function to AWS using the command aws lambda create-function
+
+`functionName=gettingstarted #you can give your preferred name
+aws lambda create-function --function-name $functionName --runtime go1.x \
+--role $rolearn \
+--handler main --zip-file fileb://./output/function.zip
+`
+
+
+* check list of functions 
+` aws lambda list-functions `
